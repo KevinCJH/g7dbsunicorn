@@ -14,30 +14,30 @@
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-    <script>        
-        window.onload =function(){
-                    
-        if (localStorage.getItem("userstatus") == 1) {
-                document.getElementById('statususer').innerHTML = "I am a Student";
-        } else{
-            document.getElementById('statususer').innerHTML = "I am a Working adult";
-        }
-            
-            document.getElementById('cashflowuser').innerHTML = '$' + localStorage.getItem("userincome");
-        
-        }
-    </script>
+  <script>        
+    window.onload =function(){
+
+      if (localStorage.getItem("userstatus") == 1) {
+        document.getElementById('statususer').innerHTML = "I am a Student";
+      } else{
+        document.getElementById('statususer').innerHTML = "I am a Working adult";
+      }
+
+      document.getElementById('cashflowuser').innerHTML = '$' + localStorage.getItem("userincome");
+
+    }
+  </script>
   <script>
     function calculate_age(dob) {
      return 2019 - Number(dob.substring(0,4))
-    } 
-  $(document).ready(function(){
-   $.ajax({ 
-   type : "GET", 
-   url : "http://api-gateway-dbs-techtrek.ap-southeast-1.elasticbeanstalk.com/customers/2/details", 
-   beforeSend: function(xhr){xhr.setRequestHeader('identity', 'Group7');
+   } 
+   $(document).ready(function(){
+     $.ajax({ 
+       type : "GET", 
+       url : "http://api-gateway-dbs-techtrek.ap-southeast-1.elasticbeanstalk.com/customers/2/details", 
+       beforeSend: function(xhr){xhr.setRequestHeader('identity', 'Group7');
        xhr.setRequestHeader('token', '608cf106-2384-46de-8271-5c1f0b40ee5c');},
-   success : function(result) { 
+       success : function(result) { 
        //set your variable to the result 
        var keys = Object.keys(result);
        var name = result.lastName + ' ' + result.firstName;
@@ -47,18 +47,18 @@
        document.getElementById('name').innerHTML = name;
        document.getElementById('age').innerHTML = age;
        document.getElementById('gender').innerHTML = gender;
-   }, 
-   error : function(result) { 
+     }, 
+     error : function(result) { 
      //handle the error 
    } 
-  });
-  });
-  </script>
+ });
+   });
+ </script>
 </head>
 
 <body>
 
-  
+
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
@@ -103,7 +103,7 @@
        Name: 
      </div>
      <div class="col-lg-3" style="font-size:24px;">
-        <p id="name"></p>
+      <p id="name"></p>
     </div>
   </div>
 
@@ -112,7 +112,7 @@
      Age: 
    </div>
    <div class="col-lg-2" style="font-size:24px;">
-      <p id="age"></p>
+    <p id="age"></p>
   </div>
 </div>
 
@@ -122,7 +122,7 @@
    Gender: 
  </div>
  <div class="col-lg-3" style="font-size:24px;">
-    <p id="gender"></p>
+  <p id="gender"></p>
 </div>
 </div>
 
@@ -137,9 +137,16 @@
 </div>
 </div>
 
-<!--Table -->
 
-<div class="row" style="">
+<h2 style="margin-left:11%;margin-top:2%;" class="text-success">Recommendations</h2>
+
+
+</div>
+
+
+
+<!--Table -->
+<div class="row" style="" id="fintable">
   <div class="col-lg-1" >
   </div>
 
@@ -267,34 +274,64 @@
 </div>
 
 
+
 </div>
 
 </div>
-          <a  role="button" href="#" style="margin-left:87%;color:white;" class="btn btn-info "> Submit</a>
-          </a>
+<div class="row">
+
+  <div class="col-lg-1">
+  </div>
+
+
+<!--Buttons -->
+  <div class="col-lg-6">
+<!--
+    <button class="btn btn-secondary" type="button" style="margin-left: 6%;">Add Financial Goal
+</button> -->
+  <!-- -->
 </div>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <a  role="button"  class="btn btn-secondary" t onclick="myfunction()" style="margin-left:87%;color:white;" class="btn btn-info "> Add Financial Goal</a>
+  </a>
+</div>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Bootstrap-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Datepicker -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!--
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+-->
 
 <script>
-  
-  $( function() {
+    function myfunction(){
+      console.log("hello");
+
+      cnosole.log(addFields);
+      $('#fintable').append(addFields);
+    }
+
+
+  $(function() {
+
+
+
+
     $( ".datepicker" ).datepicker({
       changeMonth: true,
       changeYear: true
     });
     
-  
+
   } );
 </script>
 
