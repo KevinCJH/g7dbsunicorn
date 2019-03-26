@@ -15,6 +15,20 @@
 
   <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 
+  <script>        
+    window.onload =function(){
+
+      if (localStorage.getItem("userstatus") == 1) {
+        document.getElementById('statususer').innerHTML = "I am a Student";
+      } else{
+        document.getElementById('statususer').innerHTML = "I am a Working adult";
+      }
+
+      document.getElementById('cashflowuser').innerHTML = '$' + localStorage.getItem("userincome");
+
+    }
+  </script>
+
     <script>        
         window.onload =function(){
                     
@@ -30,10 +44,18 @@
         
         }
     </script>
+
   <script>
 
     function calculate_age(dob) {
      return 2019 - Number(dob.substring(0,4))
+
+   } 
+   $(document).ready(function(){
+     $.ajax({ 
+       type : "GET", 
+       url : "http://api-gateway-dbs-techtrek.ap-southeast-1.elasticbeanstalk.com/customers/2/details", 
+       beforeSend: function(xhr){xhr.setRequestHeader('identity', 'Group7');
 
     }
   
@@ -43,6 +65,7 @@
    type : "GET", 
    url : "http://api-gateway-dbs-techtrek.ap-southeast-1.elasticbeanstalk.com/customers/2/details", 
    beforeSend: function(xhr){xhr.setRequestHeader('identity', 'Group7');
+    a09153e0d275242c6cb09e13048d68b9af9f1f2
        xhr.setRequestHeader('token', '608cf106-2384-46de-8271-5c1f0b40ee5c');},
        success : function(result) { 
        //set your variable to the result 
@@ -59,9 +82,12 @@
      //handle the error 
    } 
 
-
-  });
-  });
+ });
+   });
+ </script>
+<script>
+  //});
+  //});
 
 
   //Monthly cashflow retrieval
@@ -99,7 +125,7 @@
   });
   });
   </script>
->>>>>>> 8a09153e0d275242c6cb09e13048d68b9af9f1f2
+
 </head>
 
 <body>
@@ -109,16 +135,25 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html">GPS Financial Planning </a>
+      <a class="navbar-brand" href="#">GPS Financial Planning </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home
+            <a class="nav-link" href="#">Home
               <span class="sr-only">(current)</span>
             </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
           </li>
         </ul>
       </div>
@@ -209,7 +244,7 @@
         </td>
 
         <td width = "13%">
-          <input  placeholder="$4120" type="text" name=""><br>
+          $4120
         </td>
 
         <td width = "13%">
@@ -246,7 +281,7 @@
       </td>
 
       <td width = "13%">
-        <input type="text" placeholder="$123,000" name=""><br>
+        $123,000
       </td>
 
       <td width = "13%">
