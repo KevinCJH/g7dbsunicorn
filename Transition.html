@@ -36,6 +36,42 @@
      return 2019 - Number(dob.substring(0,4))
 
     }
+
+    //Monthly cashflow retrieval
+  //accID 74 = Mary
+  //accID 10 = John
+  var current_bal;
+  var initial_bal;
+  $(document).ready(function(){
+   $.ajax({ 
+   type : "GET", 
+   url : "http://api-gateway-dbs-techtrek.ap-southeast-1.elasticbeanstalk.com/accounts/deposit/74/balance?month=11&year=2018", 
+   beforeSend: function(xhr){xhr.setRequestHeader('identity', 'Group7');
+       xhr.setRequestHeader('token', '608cf106-2384-46de-8271-5c1f0b40ee5c');},
+   success : function(result) { 
+       //set your variable to the result 
+       var keys = Object.keys(result);
+       current_bal = result.availableBalance;
+       $(document).ready(function(){
+      $.ajax({ 
+   type : "GET", 
+   url : "http://api-gateway-dbs-techtrek.ap-southeast-1.elasticbeanstalk.com/accounts/deposit/74/balance?month=8&year=2018", 
+   beforeSend: function(xhr){xhr.setRequestHeader('identity', 'Group7');
+       xhr.setRequestHeader('token', '608cf106-2384-46de-8271-5c1f0b40ee5c');},
+   success : function(result) { 
+       //set your variable to the result 
+       var keys = Object.keys(result);
+       initial_bal = result.availableBalance;
+       var monthly_cf = (current_bal - initial_bal)/3;
+       console.log(monthly_cf);
+       document.getElementById('monthly_cf').innerHTML = '$' + Math.round(monthly_cf);
+   },
+  });
+  });
+   },
+  });
+  });
+  
   
   //Customer Profile retrieval
   $(document).ready(function(){
@@ -64,40 +100,7 @@
   });
 
 
-  //Monthly cashflow retrieval
-  //accID 74 = Mary
-  //accID 10 = John
-  var current_bal;
-  var initial_bal;
-  $(document).ready(function(){
-   $.ajax({ 
-   type : "GET", 
-   url : "http://api-gateway-dbs-techtrek.ap-southeast-1.elasticbeanstalk.com/accounts/deposit/74/balance?month=11&year=2018", 
-   beforeSend: function(xhr){xhr.setRequestHeader('identity', 'Group7');
-       xhr.setRequestHeader('token', '608cf106-2384-46de-8271-5c1f0b40ee5c');},
-   success : function(result) { 
-       //set your variable to the result 
-       var keys = Object.keys(result);
-       current_bal = result.availableBalance;
-   },
-  });
-  });
-  $(document).ready(function(){
-   $.ajax({ 
-   type : "GET", 
-   url : "http://api-gateway-dbs-techtrek.ap-southeast-1.elasticbeanstalk.com/accounts/deposit/74/balance?month=8&year=2018", 
-   beforeSend: function(xhr){xhr.setRequestHeader('identity', 'Group7');
-       xhr.setRequestHeader('token', '608cf106-2384-46de-8271-5c1f0b40ee5c');},
-   success : function(result) { 
-       //set your variable to the result 
-       var keys = Object.keys(result);
-       initial_bal = result.availableBalance;
-       var monthly_cf = (current_bal - initial_bal)/3;
-       console.log(monthly_cf);
-       document.getElementById('monthly_cf').innerHTML = '$' + Math.round(monthly_cf);
-   },
-  });
-  });
+  
   </script>
 </head>
 
