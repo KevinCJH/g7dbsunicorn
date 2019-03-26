@@ -13,9 +13,39 @@
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+  <script>
+    function calculate_age(dob) {
+     return 2019 - Number(dob.substring(0,4))
+    } 
+  $(document).ready(function(){
+   $.ajax({ 
+   type : "GET", 
+   url : "http://api-gateway-dbs-techtrek.ap-southeast-1.elasticbeanstalk.com/customers/2/details", 
+   beforeSend: function(xhr){xhr.setRequestHeader('identity', 'Group7');
+       xhr.setRequestHeader('token', '608cf106-2384-46de-8271-5c1f0b40ee5c');},
+   success : function(result) { 
+       //set your variable to the result 
+       var keys = Object.keys(result);
+       var name = result.lastName + ' ' + result.firstName;
+       var dob = result.dateOfBirth;
+       var age = calculate_age(dob)
+       var gender = result.gender;
+       document.getElementById('name').innerHTML = name;
+       document.getElementById('age').innerHTML = age;
+       document.getElementById('gender').innerHTML = gender;
+   }, 
+   error : function(result) { 
+     //handle the error 
+   } 
+  });
+  });
+  </script>
 </head>
 
 <body>
+
+  
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
@@ -60,7 +90,7 @@
        Name: 
      </div>
      <div class="col-lg-3" style="font-size:24px;">
-      Mary Tan
+        <p id="name"></p>
     </div>
   </div>
 
@@ -69,7 +99,7 @@
      Age: 
    </div>
    <div class="col-lg-2" style="font-size:24px;">
-    25
+      <p id="age"></p>
   </div>
 </div>
 
@@ -79,7 +109,7 @@
    Gender: 
  </div>
  <div class="col-lg-3" style="font-size:24px;">
-  Female
+    <p id="gender"></p>
 </div>
 </div>
 
