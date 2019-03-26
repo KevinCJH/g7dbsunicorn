@@ -14,6 +14,21 @@
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script>        
+        window.onload =function(){
+                    
+        if (localStorage.getItem("userstatus") == 1) {
+                document.getElementById('statususer').innerHTML = "I am a Student";
+                        document.getElementById("hse").style.display = "none";
+        } else{
+            document.getElementById('statususer').innerHTML = "I am a Working adult";
+                        document.getElementById("uni").style.display = "none";
+        }
+            
+            document.getElementById('cashflowuser').innerHTML = '$' + localStorage.getItem("userincome");
+        
+        }
+    </script>
   <script>
 
     function calculate_age(dob) {
@@ -121,7 +136,7 @@
         <h1 class="mt-3">Personal Profile</h1>        
       </div>
       <div class="col-lg-12">
-        <h2 class="mt-5">I am a student...</h2>        
+        <h2 class="mt-5" id="statususer"></h2>        
       </div>
     </div>
     <div class="row">
@@ -157,8 +172,12 @@
  <div class="col-lg-3" style="font-size:24px;font-weight:bold">
   Monthly Cashflow: 
 </div>
+<<<<<<< HEAD
 <div class="col-lg-3" style="margin-left:-5%;font-size:24px;">
   <p id="monthly_cf"></p>
+=======
+<div class="col-lg-3" style="margin-left:-5%;font-size:24px;" id="cashflowuser">
+>>>>>>> 6c84e851327df399a3bb8f343ef0f570374c7288
 </div>
 </div>  
 </div>
@@ -176,20 +195,22 @@
         <tr>
          <td width = "10%"  style="align:middle;">
           <div align = "center">
-            <input type = "radio" name="type" value="Travel">
+            <input type = "checkbox" name="type" value="Travel">
           </div>
         </td>
 
         <td width = "10%">
+
           <img src = "Pictures/travel1.png" height = "100" width = "100"></img>
+          <p style="margin-left:10%;">Traveling</p>
         </td>
 
         <td width= "13%" align="right">
-          Goal:
+          Goal Recom:
         </td>
 
         <td width = "13%">
-          <input type="text" name=""><br>
+          <input  placeholder="$4120" type="text" name=""><br>
         </td>
 
         <td width = "13%">
@@ -197,7 +218,7 @@
         </td>
 
         <td width = "13%">
-          <div align="left"><input type="text" name="firstname"><br></div>
+          <div align="left"><input  type="text" name="firstname"><br></div>
         </td>
 
         <td width = "13%">
@@ -205,27 +226,28 @@
         </td>
 
         <td width = "13%">
-          <div align="left"><input type="text"  class="datepicker"  name="firstname"><br></div>
+          <div align="left"><input type="text"  class="datepicker" placeholder="17/10/2019" name="firstname" ><br></div>
         </td>
       </tr>
 
-      <tr>
+      <tr id="hse">
        <td width = "10%"  style="align:middle;">
         <div align = "center">
-          <input type = "radio" name="type" value="Travel">
+          <input type = "checkbox" name="type" value="Travel">
         </div>
       </td>
 
       <td width = "10%">
         <img src = "Pictures/home1.png"  width = "60%"></img>
+        <p style="margin-left:5%;">Housing</p>
       </td>
       <!-- -->
       <td width = "13%"  align="right">
-        Goal: <br/>
+        Goal Recom: <br/>
       </td>
 
       <td width = "13%">
-        <input type="text" name=""><br>
+        <input type="text" placeholder="$123,000" name=""><br>
       </td>
 
       <td width = "13%">
@@ -241,38 +263,39 @@
       </td>
 
       <td width = "13%">
-        <div align="left"><input type="text" class="datepicker"  name="firstname"><br></div>
+        <div align="left"><input type="text" class="datepicker" placeholder="14/05/2032"  name="firstname"><br></div>
       </td>
     </tr>
 
     <!-- -->
 
-    <tr>
+    <tr id="uni">
      <td width = "10%"  style="align:middle;">
       <div align = "center">
-        <input type = "radio" name="type" value="Travel">
+        <input type = "checkbox" name="type" value="Travel">
       </div>
     </td>
 
     <td width = "10%">
       <br/>
       <img src = "Pictures/school1.jpg" height = "" width = "55%"></img>
+      <p style="margin-left:-18%;">University  Fee</p>
     </td>
 
     <td width = "13%"  align="right">
-      Goal: <br/>
+      Goal Recom: <br/>
     </td>
 
     <td width = "13%">
-      <input type="text" name=""><br>
+      <input type="text" name="" placeholder="$70,321"><br>
     </td>
 
-    <td width = "13%">
+    <td width ="13%">
       <div align="right">Target Goal:</div>
     </td>
 
     <td width = "13%">
-      <div align="left"><input type="text" name="firstname"><br></div>
+      <div align="left"><input  type="text" name="firstname"><br></div>
     </td>
 
     <td width = "13%">
@@ -280,7 +303,7 @@
     </td>
 
     <td width = "100%">
-      <div align="left"><input  class="datepicker"  name="firstname"><br></div>
+      <div align="left"><input  class="datepicker"  name="firstname" placeholder="03/12/2025"><br></div>
     </td>
   </tr>
 

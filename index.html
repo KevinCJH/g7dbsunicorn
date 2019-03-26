@@ -59,18 +59,17 @@
         <form>
           <div class="form-group">
             <label for="exampleInputEmail1">Are you a...</label>
-            <select class="browser-default custom-select custom-select-lg mb-3">
-              <option selected>Open this select menu</option>
+            <select class="browser-default custom-select custom-select-lg mb-3" id="status">
+              <option selected>--Select here--</option>
               <option value="1">Student</option>
               <option value="2">Working adult</option>
-              <option value="3">Retiree</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="usr">What is your income level...</label>
+            <label for="usr">What is your monthly income </label>
             <input type="text" class="form-control" id="income_level">
           </div>
-          <a  role="button" href="Transition.html" style="margin-left:87%;color:white;" class="btn btn-info "> Submit</a>
+          <a  role="button" href="Transition.html" style="margin-left:87%;color:white;" class="btn btn-info " onClick="submitData()"> Submit</a>
           </a>
         </form>
         
@@ -86,6 +85,13 @@
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+    function submitData(){
+               localStorage.setItem("userincome",document.getElementById("income_level").value);
+                localStorage.setItem("userstatus",document.getElementById("status").value);
+
+        }
+    </script>
 
 </body>
 
