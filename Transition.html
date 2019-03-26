@@ -14,21 +14,7 @@
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-<<<<<<< HEAD
-  <script>        
-    window.onload =function(){
 
-      if (localStorage.getItem("userstatus") == 1) {
-        document.getElementById('statususer').innerHTML = "I am a Student";
-      } else{
-        document.getElementById('statususer').innerHTML = "I am a Working adult";
-      }
-
-      document.getElementById('cashflowuser').innerHTML = '$' + localStorage.getItem("userincome");
-
-    }
-  </script>
-=======
     <script>        
         window.onload =function(){
                     
@@ -49,14 +35,7 @@
 
     function calculate_age(dob) {
      return 2019 - Number(dob.substring(0,4))
-<<<<<<< HEAD
-   } 
-   $(document).ready(function(){
-     $.ajax({ 
-       type : "GET", 
-       url : "http://api-gateway-dbs-techtrek.ap-southeast-1.elasticbeanstalk.com/customers/2/details", 
-       beforeSend: function(xhr){xhr.setRequestHeader('identity', 'Group7');
-=======
+
     }
   
   //Customer Profile retrieval
@@ -81,11 +60,8 @@
      error : function(result) { 
      //handle the error 
    } 
-<<<<<<< HEAD
- });
-   });
- </script>
-=======
+
+
   });
   });
 
