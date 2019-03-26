@@ -14,6 +14,7 @@
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+<<<<<<< HEAD
   <script>        
     window.onload =function(){
 
@@ -27,15 +28,44 @@
 
     }
   </script>
+=======
+    <script>        
+        window.onload =function(){
+                    
+        if (localStorage.getItem("userstatus") == 1) {
+                document.getElementById('statususer').innerHTML = "I am a Student";
+                        document.getElementById("hse").style.display = "none";
+        } else{
+            document.getElementById('statususer').innerHTML = "I am a Working adult";
+                        document.getElementById("uni").style.display = "none";
+        }
+            
+            document.getElementById('cashflowuser').innerHTML = '$' + localStorage.getItem("userincome");
+        
+        }
+    </script>
+>>>>>>> 8a09153e0d275242c6cb09e13048d68b9af9f1f2
   <script>
+
     function calculate_age(dob) {
      return 2019 - Number(dob.substring(0,4))
+<<<<<<< HEAD
    } 
    $(document).ready(function(){
      $.ajax({ 
        type : "GET", 
        url : "http://api-gateway-dbs-techtrek.ap-southeast-1.elasticbeanstalk.com/customers/2/details", 
        beforeSend: function(xhr){xhr.setRequestHeader('identity', 'Group7');
+=======
+    }
+  
+  //Customer Profile retrieval
+  $(document).ready(function(){
+   $.ajax({ 
+   type : "GET", 
+   url : "http://api-gateway-dbs-techtrek.ap-southeast-1.elasticbeanstalk.com/customers/2/details", 
+   beforeSend: function(xhr){xhr.setRequestHeader('identity', 'Group7');
+>>>>>>> 8a09153e0d275242c6cb09e13048d68b9af9f1f2
        xhr.setRequestHeader('token', '608cf106-2384-46de-8271-5c1f0b40ee5c');},
        success : function(result) { 
        //set your variable to the result 
@@ -51,9 +81,51 @@
      error : function(result) { 
      //handle the error 
    } 
+<<<<<<< HEAD
  });
    });
  </script>
+=======
+  });
+  });
+
+
+  //Monthly cashflow retrieval
+  //accID 74 = Mary
+  //accID 10 = John
+  var current_bal;
+  var initial_bal;
+  $(document).ready(function(){
+   $.ajax({ 
+   type : "GET", 
+   url : "http://api-gateway-dbs-techtrek.ap-southeast-1.elasticbeanstalk.com/accounts/deposit/74/balance?month=11&year=2018", 
+   beforeSend: function(xhr){xhr.setRequestHeader('identity', 'Group7');
+       xhr.setRequestHeader('token', '608cf106-2384-46de-8271-5c1f0b40ee5c');},
+   success : function(result) { 
+       //set your variable to the result 
+       var keys = Object.keys(result);
+       current_bal = result.availableBalance;
+   },
+  });
+  });
+  $(document).ready(function(){
+   $.ajax({ 
+   type : "GET", 
+   url : "http://api-gateway-dbs-techtrek.ap-southeast-1.elasticbeanstalk.com/accounts/deposit/74/balance?month=8&year=2018", 
+   beforeSend: function(xhr){xhr.setRequestHeader('identity', 'Group7');
+       xhr.setRequestHeader('token', '608cf106-2384-46de-8271-5c1f0b40ee5c');},
+   success : function(result) { 
+       //set your variable to the result 
+       var keys = Object.keys(result);
+       initial_bal = result.availableBalance;
+       var monthly_cf = (current_bal - initial_bal)/3;
+       console.log(monthly_cf);
+       document.getElementById('monthly_cf').innerHTML = '$' + Math.round(monthly_cf);
+   },
+  });
+  });
+  </script>
+>>>>>>> 8a09153e0d275242c6cb09e13048d68b9af9f1f2
 </head>
 
 <body>
@@ -131,7 +203,8 @@
  <div class="col-lg-3" style="font-size:24px;font-weight:bold">
   Monthly Cashflow: 
 </div>
-<div class="col-lg-3" style="margin-left:-5%;font-size:24px;" id="cashflowuser">
+<div class="col-lg-3" style="margin-left:-5%;font-size:24px;">
+  <p id="monthly_cf"></p>
 </div>
 </div>  
 </div>
@@ -191,7 +264,7 @@
         </td>
       </tr>
 
-      <tr>
+      <tr id="hse">
        <td width = "10%"  style="align:middle;">
         <div align = "center">
           <input type = "checkbox" name="type" value="Travel">
@@ -230,7 +303,7 @@
 
     <!-- -->
 
-    <tr>
+    <tr id="uni">
      <td width = "10%"  style="align:middle;">
       <div align = "center">
         <input type = "checkbox" name="type" value="Travel">
