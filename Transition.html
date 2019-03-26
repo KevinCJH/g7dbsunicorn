@@ -19,8 +19,10 @@
                     
         if (localStorage.getItem("userstatus") == 1) {
                 document.getElementById('statususer').innerHTML = "I am a Student";
+                        document.getElementById("hse").style.display = "none";
         } else{
             document.getElementById('statususer').innerHTML = "I am a Working adult";
+                        document.getElementById("uni").style.display = "none";
         }
             
             document.getElementById('cashflowuser').innerHTML = '$' + localStorage.getItem("userincome");
@@ -184,7 +186,7 @@
         </td>
       </tr>
 
-      <tr>
+      <tr id="hse">
        <td width = "10%"  style="align:middle;">
         <div align = "center">
           <input type = "checkbox" name="type" value="Travel">
@@ -223,7 +225,7 @@
 
     <!-- -->
 
-    <tr>
+    <tr id="uni">
      <td width = "10%"  style="align:middle;">
       <div align = "center">
         <input type = "checkbox" name="type" value="Travel">
