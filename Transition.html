@@ -48,20 +48,18 @@
     function calculate_age(dob) {
      return 2019 - Number(dob.substring(0,4))
 
-<<<<<<< HEAD
+
    }
-=======
-   } 
+
+   
    $(document).ready(function(){
      $.ajax({ 
        type : "GET", 
        url : "http://api-gateway-dbs-techtrek.ap-southeast-1.elasticbeanstalk.com/customers/2/details", 
-       beforeSend: function(xhr){xhr.setRequestHeader('identity', 'Group7');
+       beforeSend: function(xhr){xhr.setRequestHeader('identity', 'Group7');}
+    });
 
-    }
-<<<<<<< HEAD
-=======
->>>>>>> 51cd3bbb9d30f246e14bd2035c7cef8c911524fc
+   });
   
   //Customer Profile retrieval
   $(document).ready(function(){
@@ -81,26 +79,24 @@
        document.getElementById('name').innerHTML = name;
        document.getElementById('age').innerHTML = age;
        document.getElementById('gender').innerHTML = gender;
-     }, 
-     error : function(result) { 
-     //handle the error 
-   } 
+     }
 
  });
    });
+ 
  </script>
+
+
 <script>
-<<<<<<< HEAD
-=======
+
   //});
   //});
 
->>>>>>> 980fc5a173cf4e3ecf22864899c79f85c1cd3eb2
 
     //Monthly cashflow retrieval
   //accID 74 = Mary
   //accID 10 = John
->>>>>>> 51cd3bbb9d30f246e14bd2035c7cef8c911524fc
+
   var current_bal;
   var initial_bal;
   $(document).ready(function(){
@@ -114,11 +110,11 @@
        var keys = Object.keys(result);
        current_bal = result.availableBalance;
        $(document).ready(function(){
-<<<<<<< HEAD
-   $.ajax({ 
-=======
+
+   
+
       $.ajax({ 
->>>>>>> 51cd3bbb9d30f246e14bd2035c7cef8c911524fc
+
    type : "GET", 
    url : "http://api-gateway-dbs-techtrek.ap-southeast-1.elasticbeanstalk.com/accounts/deposit/74/balance?month=8&year=2018", 
    beforeSend: function(xhr){xhr.setRequestHeader('identity', 'Group7');
@@ -137,8 +133,8 @@
   });
   });
   
-<<<<<<< HEAD
-=======
+
+
   
   //Customer Profile retrieval
   $(document).ready(function(){
@@ -168,7 +164,7 @@
 
 
   
->>>>>>> 51cd3bbb9d30f246e14bd2035c7cef8c911524fc
+
   </script>
 
 
